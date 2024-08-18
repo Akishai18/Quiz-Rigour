@@ -1,0 +1,1599 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    color: #fff;
+    background: #09001d;
+    overflow: hidden;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo{
+    font-size: 32px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    filter: drop-shadow(0 0 5px #09001d);
+}
+
+.navbar a{
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: .3s;
+}
+
+.navbar a:hover{
+    color: #c40094
+}
+
+.navbar a.active {
+    color: white
+}
+
+
+.main{
+    min-height: 100vh;
+    background: url('background_image.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: .3s ease;
+    pointer-events: auto;
+}
+
+.main.active{
+    filter: blur(15px);
+    pointer-events: none;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 200%;
+}
+
+
+
+.home {
+    position: relative;
+    left: -50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-content{
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home-content h1{
+font-size: 78px;
+font-weight: 700;
+text-shadow: 0 0 10px rgba(0,0,0,.3);
+
+
+}
+
+
+.home-content p{
+    font-size: 16px;
+    text-align: center;
+    text-shadow: 0 0 10px (0,0,0,.3);
+    margin-bottom:30px;
+}
+
+.home-content .start-btn{
+    width: 190px;
+    height: 55px;
+    background: #0003c4;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    box-shadow: 0,0 10px #0003c4;
+    font-size: 18px;
+    color: #fff;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.home-content .start-btn:hover{
+    background: #09001d;
+    box-shadow: none;
+}
+
+.popup-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.9);
+    width: 500px;
+    height: 500px;
+    background: #fff;
+    border-radius: 6px;
+    padding: 10px 25px;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s ease;
+}
+
+.popup-info.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-info h2 {
+    font-size: 50px;
+    color: #c40094;
+}
+
+.popup-info .info {
+    display: inline-block;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    margin: 4px 0;
+}
+
+.popup-info .exit-btn {
+    display: inline-flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 45px;
+    margin-left: 10rem;
+    margin-top: 4rem;
+    background: #000000;
+    border: 2px solid #0d00c4;
+    outline: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.popup-info .exit-btn:hover {
+    background: #ffffff;
+    color: #000000;
+    transform: scale(1.05);
+
+}
+
+.popup-info .math-btn {
+    background: #1d2d8b;
+    display: inline-flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 45px;
+    border: 2px solid #0d00c4;
+    outline: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.popup-info .math-btn:hover {
+    background: #85e9fd;
+    transform: scale(1.05);
+
+}
+
+.popup-info .physics-btn {
+    display: inline-flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 45px;
+    margin-left: 1rem;
+    background: #8c06f9;
+    border: 2px solid #0d00c4;
+    outline: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor: pointer;
+    transition: .5s;
+
+}
+
+.popup-info .physics-btn:hover {
+    background-color: #db9cff;
+    transform: scale(1.05);
+}
+
+.popup-info .chemistry-btn {
+    background: #005c2b;
+    display: inline-flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 45px;
+    margin-left: 2rem;
+    border: 2px solid #0d00c4;
+    outline: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.popup-info  .chemistry-btn:hover {
+    background: #52ffab;
+    transform: scale(1.05);
+
+}
+
+.popup-info  .finance-btn {
+    background: #ff3131;
+    display: inline-flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 45px;
+    margin-left: 3rem;
+    margin-top: 1rem;
+    border: 2px solid #0d00c4;
+    outline: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.popup-info  .finance-btn:hover {
+    background: #ff7b7b;
+    transform: scale(1.05);
+
+}
+
+.popup-info  .biology-btn {
+    background: #9bf006;
+    display: inline-flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 45px;
+    margin-left: 4rem;
+    margin-top: 1rem;
+    border: 2px solid #0d00c4;
+    outline: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.popup-info  .biology-btn:hover {
+    background: #b5fe98;
+    transform: scale(1.05);
+}
+.quiz-section{
+    position: relative;
+    left: -50%;
+    width:100%;
+    background: #09001d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .8s ease-in-out;
+    transition-delay: .25s;
+    z-index: 100;
+}
+
+.quiz-section.active{
+    left: 0;
+}
+
+
+.quiz-section .quiz-box{
+    position: relative; 
+    width: 500px;
+    background: transparent;
+    border: 2px solid #020c92;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(.9);
+    transition: .3s ease;
+    transition-delay:0s ;
+
+}
+
+.quiz-section .quiz-box.active{
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    transition: 1s ease;
+    transition-delay:1s ;
+}
+.quiz-box h1 {
+    font-size: 32px;
+    text-align: center;
+    background: linear-gradient(45deg,transparent,#0021c4,transparent);
+    border-radius: 6px;
+}
+
+.quiz-box .quiz-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #0034c4 ;
+    margin-bottom: 30px;
+
+}
+
+.quiz-header span{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.quiz-header .header-score{
+    background: #0000c4;
+    border-radius: 3px;
+    padding: 7px;
+}
+
+.quiz-box .question-text{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.option-list .option{
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.2);
+    border-radius: 4px;
+    font-size: 17px;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.option-list .option:hover{
+    background: rgba(255,255,255,.1);
+    border-color:  rgba(255,255,255,.1);
+}
+
+.option-list .option.incorrect{
+    background: #09001d;
+    color: #a60045;
+    border-color: #a60045;
+}
+
+.option-list .option.disabled{
+    pointer-events:none;
+}
+
+.option-list .option.correct{
+    background: #09001d;
+    color: #00a63d;
+    border-color: #00a63d;
+}
+
+.quiz-box .quiz-footer{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #001ac4;
+    padding-top: 20px;
+    margin-top: 25px;
+}
+
+.quiz-footer .question-total{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.quiz-footer .next-btn{
+    width: 100px;
+    height: 45px;
+    background: rgba(255,255,255,.1);
+    border: 2px solid rgba(255,255,255,.1);
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: rgba(255,255,255,.3);
+    font-weight: 600;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .5s;
+}
+
+
+.quiz-footer .next-btn.active{
+    pointer-events: auto;
+    background:#0300c4;
+    border-color: #2400c4;
+    color: #fff
+}
+
+.quiz-footer .next-btn.active:hover{
+    background: #0b0051;
+    border-color: #00046c;
+}
+
+.quiz-section .result-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(.9);
+    width: 500px;
+    background: transparent; 
+    border: 2px solid #0010c4;
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s ease;
+}
+
+.quiz-section .result-box.active{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%,-50%) scale(1);
+
+}
+
+
+.result-box h2{
+    font-size: 52px;
+}
+
+.result-box .percentage-container{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 40px;
+
+}
+
+.percentage-container .circular-progress{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background: conic-gradient(#000ac4 3.6deg,rgba(255,255,255,.1)0deg);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.percentage-container .circular-progress::before{
+    content: '';
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    background: #09001d;
+    border-radius: 50%;
+}
+
+.circular-progress .progress-value{
+    position: relative;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+.percentage-container .score-text{
+    font-size: 26px;
+    font-weight: 600;
+    margin-top: 20px;
+
+}
+
+.result-box .buttons{
+    display: flex;
+}
+
+.buttons button{
+    width: 130px;
+    height: 47px;
+    background: #0d00c4;
+    border: 2px solid #0000c4;
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    margin: 0 20px 20px;
+    cursor: pointer;
+    transition: .5s ;
+}
+
+.buttons button:nth-child(1):hover{
+    background: #010b95;
+    border-color: #010195;
+}
+
+.buttons button:nth-child(2){
+    background: transparent;
+    color: #1700c4
+}
+
+
+.buttons button:nth-child(2):hover{
+    background: #2400c4;
+    color: #fff
+}
+
+
+.physics-quiz-section{
+    background: #09001d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .8s ease-in-out;
+    transition-delay: .25s;
+    z-index: 100;
+}
+
+.physics-quiz-section.active{
+    left: 0;
+}
+
+
+.physics-quiz-section .physics-quiz-box{
+    position: relative;
+    margin-left: 30rem;
+    width: 600px;
+    background: transparent;
+    border: 2px solid #39005a;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(.9);
+    transition: .3s ease;
+    transition-delay:0s ;
+
+}
+
+.physics-quiz-section .physics-quiz-box.active{
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    transition: 1s ease;
+    transition-delay:1s ;
+}
+.physics-quiz-box h1 {
+    font-size: 32px;
+    text-align: center;
+    background: linear-gradient(45deg,transparent,#4200a5,transparent);
+    border-radius: 6px;
+}
+
+.physics-quiz-box .physics-quiz-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #4200a5 ;
+    margin-bottom: 30px;
+
+}
+
+.physics-quiz-header span{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.physics-quiz-header .physics-header-score{
+    background: #4200a5;
+    border-radius: 3px;
+    padding: 7px;
+}
+
+.physics-quiz-box .physics-question-text{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.physics-option-list .physics-option{
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.2);
+    border-radius: 4px;
+    font-size: 17px;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.physics-option-list .physics-option:hover{
+    background: rgba(255,255,255,.1);
+    border-color:  rgba(255,255,255,.1);
+}
+
+.physics-option-list .physics-option.incorrect{
+    background: #09001d;
+    color: #a60045;
+    border-color: #a60045;
+}
+
+.physics-option-list .physics-option.disabled{
+    pointer-events:none;
+}
+
+.physics-option-list .physics-option.correct{
+    background: #09001d;
+    color: #00a63d;
+    border-color: #00a63d;
+}
+
+.physics-quiz-box .physics-quiz-footer{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #4200a5;
+    padding-top: 20px;
+    margin-top: 25px;
+}
+
+.physics-quiz-footer .physics-question-total{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.physics-quiz-footer .physics-next-btn{
+    width: 100px;
+    height: 45px;
+    background: rgba(255,255,255,.1);
+    border: 2px solid rgba(255,255,255,.1);
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: rgba(255,255,255,.3);
+    font-weight: 600;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .5s;
+}
+
+
+.physics-quiz-footer .physics-next-btn.active{
+    pointer-events: auto;
+    background:#4200a5;
+    border-color: #4200a5;
+    color: #fff
+}
+
+.physics-quiz-footer .physics-next-btn.active:hover{
+    background: #440071;
+    border-color: #440071;
+}
+
+.physics-quiz-section .physics-result-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(.9);
+    width: 500px;
+    background: transparent; 
+    border: 2px solid #450082;
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s ease;
+}
+
+.physics-quiz-section .physics-result-box.active{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%,-50%) scale(1);
+
+}
+
+
+.physics-result-box h2{
+    font-size: 52px;
+}
+
+.physics-result-box .physics-percentage-container{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 40px;
+
+}
+
+.physics-percentage-container .physics-circular-progress{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background: conic-gradient(#440071 3.6deg,rgba(255,255,255,.1)0deg);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.physics-percentage-container .physics-circular-progress::before{
+    content: '';
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    background: #09001d;
+    border-radius: 50%;
+}
+
+.physics-circular-progress .physics-progress-value{
+    position: relative;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+.physics-percentage-container .physics-score-text{
+    font-size: 26px;
+    font-weight: 600;
+    margin-top: 20px;
+
+}
+
+.physics-result-box .physics-buttons{
+    display: flex;
+}
+
+.physics-buttons button{
+    width: 130px;
+    height: 47px;
+    background: #9000c4;
+    border: 2px solid #9000c4;
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    margin: 0 20px 20px;
+    cursor: pointer;
+    transition: .5s ;
+}
+
+.physics-buttons button:nth-child(1):hover{
+    background: #2c003a;
+    border-color: #2c003a;
+}
+
+.physics-buttons button:nth-child(2){
+    background: transparent;
+    color: #2c003a
+}
+
+
+.physics-buttons button:nth-child(2):hover{
+    background: #2c003a;
+    color: #fff
+}
+
+.chemistry-quiz-section{
+    background: #09001d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .8s ease-in-out;
+    transition-delay: .25s;
+    z-index: 100;
+}
+
+.chemistry-quiz-section.active{
+    left: 0;
+}
+
+
+.chemistry-quiz-section .chemistry-quiz-box{
+    position: relative;
+    margin-left: 30rem;
+    width: 600px;
+    background: transparent;
+    border: 2px solid #005407;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(.9);
+    transition: .3s ease;
+    transition-delay:0s ;
+
+}
+
+.chemistry-quiz-section .chemistry-quiz-box.active{
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    transition: 1s ease;
+    transition-delay:1s ;
+}
+.chemistry-quiz-box h1 {
+    font-size: 32px;
+    text-align: center;
+    background: linear-gradient(45deg,transparent,#005407,transparent);
+    border-radius: 6px;
+}
+
+.chemistry-quiz-box .chemistry-quiz-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #005407 ;
+    margin-bottom: 30px;
+
+}
+
+.chemistry-quiz-header span{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.chemistry-quiz-header .chemistry-header-score{
+    background: #005407;
+    border-radius: 3px;
+    padding: 7px;
+}
+
+.chemistry-quiz-box .chemistry-question-text{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.chemistry-option-list .chemistry-option{
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.2);
+    border-radius: 4px;
+    font-size: 17px;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.chemistry-option-list .chemistry-option:hover{
+    background: rgba(255,255,255,.1);
+    border-color:  rgba(255,255,255,.1);
+}
+
+.chemistry-option-list .chemistry-option.incorrect{
+    background: #09001d;
+    color: #a60045;
+    border-color: #a60045;
+}
+
+.chemistry-option-list .chemistry-option.disabled{
+    pointer-events:none;
+}
+
+.chemistry-option-list .chemistry-option.correct{
+    background: #09001d;
+    color: #00a63d;
+    border-color: #00a63d;
+}
+
+.chemistry-quiz-box .chemistry-quiz-footer{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #005407;
+    padding-top: 20px;
+    margin-top: 25px;
+}
+
+.chemistry-quiz-footer .chemistry-question-total{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.chemistry-quiz-footer .chemistry-next-btn{
+    width: 100px;
+    height: 45px;
+    background: rgba(255,255,255,.1);
+    border: 2px solid rgba(255,255,255,.1);
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: rgba(255,255,255,.3);
+    font-weight: 600;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .5s;
+}
+
+
+.chemistry-quiz-footer .chemistry-next-btn.active{
+    pointer-events: auto;
+    background:#032207;
+    border-color: #032207;
+    color: #fff
+}
+
+.chemistry-quiz-footer .chemistry-next-btn.active:hover{
+    background: #950170;
+    border-color: #950170;
+}
+
+.chemistry-quiz-section .chemistry-result-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(.9);
+    width: 500px;
+    background: transparent; 
+    border: 2px solid #032207;
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s ease;
+}
+
+.chemistry-quiz-section .chemistry-result-box.active{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%,-50%) scale(1);
+
+}
+
+
+.chemistry-result-box h2{
+    font-size: 52px;
+}
+
+.chemistry-result-box .chemistry-percentage-container{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 40px;
+
+}
+
+.chemistry-percentage-container .chemistry-circular-progress{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background: conic-gradient(#006511 3.6deg,rgba(255,255,255,.1)0deg);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chemistry-percentage-container .chemistry-circular-progress::before{
+    content: '';
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    background: #09001d;
+    border-radius: 50%;
+}
+
+.chemistry-circular-progress .chemistry-progress-value{
+    position: relative;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+.chemistry-percentage-container .chemistry-score-text{
+    font-size: 26px;
+    font-weight: 600;
+    margin-top: 20px;
+
+}
+
+.chemistry-result-box .chemistry-buttons{
+    display: flex;
+}
+
+.chemistry-buttons button{
+    width: 130px;
+    height: 47px;
+    background: #006511;
+    border: 2px solid #006511;
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    margin: 0 20px 20px;
+    cursor: pointer;
+    transition: .5s ;
+}
+
+.chemistry-buttons button:nth-child(1):hover{
+    background: #011c06;
+    border-color: #011c06;
+}
+
+.chemistry-buttons button:nth-child(2){
+    background: transparent;
+    color: #006511
+}
+
+
+.chemistry-buttons button:nth-child(2):hover{
+    background: #006511;
+    color: #fff
+}
+
+.biology-quiz-section{
+    background: #09001d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .8s ease-in-out;
+    transition-delay: .25s;
+    z-index: 100;
+}
+
+.biology-quiz-section.active{
+    left: 0;
+}
+
+
+.biology-quiz-section .biology-quiz-box{
+    position: relative;
+    margin-left: 30rem;
+    width: 600px;
+    background: transparent;
+    border: 2px solid #eaff5e;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(.9);
+    transition: .3s ease;
+    transition-delay:0s ;
+
+}
+
+.biology-quiz-section .biology-quiz-box.active{
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    transition: 1s ease;
+    transition-delay:1s ;
+}
+.biology-quiz-box h1 {
+    font-size: 32px;
+    text-align: center;
+    background: linear-gradient(45deg,transparent,#eaff5e,transparent);
+    border-radius: 6px;
+}
+
+.biology-quiz-box .biology-quiz-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #eaff5e ;
+    margin-bottom: 30px;
+
+}
+
+.biology-quiz-header span{
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+}
+
+.biology-quiz-header .biology-header-score{
+    background: #eaff5e;
+    border-radius: 3px;
+    padding: 7px;
+}
+
+.biology-quiz-box .biology-question-text{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.biology-option-list .biology-option{
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.2);
+    border-radius: 4px;
+    font-size: 17px;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.biology-option-list .biology-option:hover{
+    background: rgba(255,255,255,.1);
+    border-color:  rgba(255,255,255,.1);
+}
+
+.biology-option-list .biology-option.incorrect{
+    background: #09001d;
+    color: #a60045;
+    border-color: #a60045;
+}
+
+.biology-option-list .biology-option.disabled{
+    pointer-events:none;
+}
+
+.biology-option-list .biology-option.correct{
+    background: #09001d;
+    color: #00a63d;
+    border-color: #00a63d;
+}
+
+.biology-quiz-box .biology-quiz-footer{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #eaff5e;
+    padding-top: 20px;
+    margin-top: 25px;
+}
+
+.biology-quiz-footer .biology-question-total{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.biology-quiz-footer .biology-next-btn{
+    width: 100px;
+    height: 45px;
+    background: rgba(255,255,255,.1);
+    border: 2px solid rgba(255,255,255,.1);
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: rgba(255,255,255,.3);
+    font-weight: 600;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .5s;
+}
+
+
+.biology-quiz-footer .biology-next-btn.active{
+    pointer-events: auto;
+    background:#eaff5e;
+    border-color: #eaff5e;
+    color: black;   
+}
+
+.biology-quiz-footer .biology-next-btn.active:hover{
+    background: #2f3600;
+    border-color: #2f3600;
+    color: white
+}
+
+.biology-quiz-section .biology-result-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(.9);
+    width: 500px;
+    background: transparent; 
+    border: 2px solid #eaff5e;
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s ease;
+}
+
+.biology-quiz-section .biology-result-box.active{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%,-50%) scale(1);
+
+}
+
+
+.biology-result-box h2{
+    font-size: 52px;
+}
+
+.biology-result-box .biology-percentage-container{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 40px;
+
+}
+
+.biology-percentage-container .biology-circular-progress{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background: conic-gradient(#eaff5e 3.6deg,rgba(255,255,255,.1)0deg);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.biology-percentage-container .biology-circular-progress::before{
+    content: '';
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    background: #09001d;
+    border-radius: 50%;
+}
+
+.biology-circular-progress .biology-progress-value{
+    position: relative;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+.biology-percentage-container .biology-score-text{
+    font-size: 26px;
+    font-weight: 600;
+    margin-top: 20px;
+
+}
+
+.biology-result-box .biology-buttons{
+    display: flex;
+}
+
+.biology-buttons button{
+    width: 130px;
+    height: 47px;
+    background: #eaff5e;
+    border: 2px solid #eaff5e;
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px; 
+    font-weight: 600;
+    margin: 0 20px 20px;
+    cursor: pointer;
+    transition: .5s ;
+}
+
+.biology-buttons button:nth-child(1):hover{
+    background: #4c5800;
+    border-color: #4c5800;
+}
+
+.biology-buttons button:nth-child(2){
+    background: transparent;
+    color: #4c5800
+}
+
+
+.biology-buttons button:nth-child(2):hover{
+    background: #4c5800;
+    color: #fff
+}
+
+.finance-quiz-section{
+    background: #09001d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .8s ease-in-out;
+    transition-delay: .25s;
+    z-index: 100;
+}
+
+.finance-quiz-section.active{
+    left: 0;
+}
+
+
+.finance-quiz-section .finance-quiz-box{
+    position: relative;
+    margin-left: 30rem;
+    width: 600px;
+    background: transparent;
+    border: 2px solid #880000;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(.9);
+    transition: .3s ease;
+    transition-delay:0s ;
+
+}
+
+.finance-quiz-section .finance-quiz-box.active{
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    transition: 1s ease;
+    transition-delay:1s ;
+}
+.finance-quiz-box h1 {
+    font-size: 32px;
+    text-align: center;
+    background: linear-gradient(45deg,transparent,#880000,transparent);
+    border-radius: 6px;
+}
+
+.finance-quiz-box .finance-quiz-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #880000 ;
+    margin-bottom: 30px;
+
+}
+
+.finance-quiz-header span{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.finance-quiz-header .finance-header-score{
+    background: #880000;
+    border-radius: 3px;
+    padding: 7px;
+}
+
+.finance-quiz-box .finance-question-text{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.finance-option-list .finance-option{
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.2);
+    border-radius: 4px;
+    font-size: 17px;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.finance-option-list .finance-option:hover{
+    background: rgba(255,255,255,.1);
+    border-color:  rgba(255,255,255,.1);
+}
+
+.finance-option-list .finance-option.incorrect{
+    background: #09001d;
+    color: #a60045;
+    border-color: #a60045;
+}
+
+.finance-option-list .finance-option.disabled{
+    pointer-events:none;
+}
+
+.finance-option-list .finance-option.correct{
+    background: #09001d;
+    color: #00a63d;
+    border-color: #00a63d;
+}
+
+.finance-quiz-box .finance-quiz-footer{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #880000;
+    padding-top: 20px;
+    margin-top: 25px;
+}
+
+.finance-quiz-footer .finance-question-total{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.finance-quiz-footer .finance-next-btn{
+    width: 100px;
+    height: 45px;
+    background: rgba(255,255,255,.1);
+    border: 2px solid rgba(255,255,255,.1);
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: rgba(255,255,255,.3);
+    font-weight: 600;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .5s;
+}
+
+
+.finance-quiz-footer .finance-next-btn.active{
+    pointer-events: auto;
+    background:#880000;
+    border-color: #880000;
+    color: #fff
+}
+
+.finance-quiz-footer .finance-next-btn.active:hover{
+    background: #300000;
+    border-color: #300000;
+}
+
+.finance-quiz-section .finance-result-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(.9);
+    width: 500px;
+    background: transparent; 
+    border: 2px solid #880000;
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s ease;
+}
+
+.finance-quiz-section .finance-result-box.active{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%,-50%) scale(1);
+
+}
+
+
+.finance-result-box h2{
+    font-size: 52px;
+}
+
+.finance-result-box .finance-percentage-container{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 40px;
+
+}
+
+.finance-percentage-container .finance-circular-progress{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background: conic-gradient(#880000 3.6deg,rgba(255,255,255,.1)0deg);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.finance-percentage-container .finance-circular-progress::before{
+    content: '';
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    background: #09001d;
+    border-radius: 50%;
+}
+
+.finance-circular-progress .finance-progress-value{
+    position: relative;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+.finance-percentage-container .finance-score-text{
+    font-size: 26px;
+    font-weight: 600;
+    margin-top: 20px;
+
+}
+
+.finance-result-box .finance-buttons{
+    display: flex;
+}
+
+.finance-buttons button{
+    width: 130px;
+    height: 47px;
+    background: #880000;
+    border: 2px solid #880000;
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    margin: 0 20px 20px;
+    cursor: pointer;
+    transition: .5s ;
+}
+
+.finance-buttons button:nth-child(1):hover{
+    background: #360101;
+    border-color: #360101;
+}
+
+.finance-buttons button:nth-child(2){
+    background: transparent;
+    color: #360101
+}
+
+
+.finance-buttons button:nth-child(2):hover{
+    background: #360101;
+    color: #fff
+}

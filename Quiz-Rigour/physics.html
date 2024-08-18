@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compativle" content = "IE=edge">
+    <meta name="viewport" content = "width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container"> 
+        <section class="physics-quiz-section">
+            <div class="physics-quiz-box">
+                <h1> Physics Quiz </h1>
+                <div class="physics-quiz-header">
+                    <span> Topics: Mechanics, Energy, Waves </span>
+                    <span class="physics-header-score"> Score: 0/5 </span>
+                </div>
+                <h2 class="physics-question-text">What does HTML stand for </h2>
+                <div class="physics-option-list"> 
+                    <div class="physics-option">
+                        <span></span>
+                    </div>
+                    <div class="physics-option">
+                        <span> </span>
+                    </div>
+                    <div class="physics-option">
+                        <span></span>
+                    </div>
+                    <div class="physics-option">
+                        <span> </span>
+                    </div>
+                </div>
+                <div class="physics-quiz-footer">
+                    <span class = "physics-question-total">  </span>
+                    <button class="physics-next-btn"> Next </button>
+                </div>
+            </div>
+            <div class="physics-result-box">
+                <h2> Quiz Result! </h2>
+                <div class="physics-percentage-container">
+                    <div class="physics-circular-progress">
+                        <span class="physics-progress-value">0% </span>
+                    </div>
+                    <span class="physics-score-text"> Your Score 0 out of 5 </span>
+                </div>
+                <div class="physics-buttons">
+                    <button class="physics-tryAgain-btn"> Try Again </button>
+                    <button class="physics-goHome-btn">Go to Home</button>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src = "question.js"></script>
+    <script>
+        const physicsquizSection = document.querySelector('.physics-quiz-section');
+        const physicsquizBox = document.querySelector('.physics-quiz-box'); 
+        const physicsresultBox = document.querySelector('.physics-result-box');
+        const physicstryAgainBtn = document.querySelector('.physics-tryAgain-btn');
+        const physicsgoHomeBtn = document.querySelector('.physics-goHome-btn');
+        const physicsoptionList = document.querySelector('.physics-option-list');
+        const physicsnextBtn = document.querySelector('.physics-next-btn');
+
+        let questionCount = 0;
+        let questionNumb = 1;
+        let userScore = 0;
+
+        function initialize() {
+            physicsquizSection.classList.add('active');
+            physicsquizBox.classList.add('active');
+            showQuestions(questionCount);
+            questionCounter(questionNumb);
+            headerScore();
+        }
+        initialize();
+
+        physicstryAgainBtn.onclick = () => {
+            physicsquizBox.classList.add('active');
+            physicsresultBox.classList.remove('active');
+            
+            questionCount = 0;
+            questionNumb = 1;
+            userScore = 0;
+
+            showQuestions(questionCount);
+            questionCounter(questionNumb);
+            headerScore();
+        }
+        physicsgoHomeBtn.onclick = () => {
+            window.location.href = 'index.html';
+        }
+        physicsnextBtn.onclick = () => {
+            if (questionCount < physicsquestions.length - 1) {
+                questionCount++;
+                showQuestions(questionCount);
+                questionNumb++;
+                questionCounter(questionNumb);
+                physicsnextBtn.classList.remove('active');
+            } else {
+                physicsquizBox.classList.remove('active');
+                showResultBox();
+            }
+        }
+
+        function showQuestions(index) {
+            const physicsquestionText = document.querySelector(".physics-question-text");
+            physicsquestionText.textContent = `${physicsquestions[index].numb}. ${physicsquestions[index].question}`;
+
+            let optionTag = `
+                <div class="physics-option"> <span>${physicsquestions[index].options[0]}</span> </div>
+                <div class="physics-option"> <span>${physicsquestions[index].options[1]}</span> </div>
+                <div class="physics-option"> <span>${physicsquestions[index].options[2]}</span> </div>
+                <div class="physics-option"> <span>${physicsquestions[index].options[3]}</span> </div>`;
+
+            physicsoptionList.innerHTML = optionTag;
+
+            const physicsoption = document.querySelectorAll('.physics-option');
+            physicsoption.forEach(option => {
+                option.addEventListener('click', () => optionSelected(option));
+            });
+        }
+
+        function optionSelected(answer) {
+            let userAnswer = answer.textContent.trim();
+            let correctAnswer = physicsquestions[questionCount].answer.trim();
+            let allOptions = physicsoptionList.children.length;
+
+            if (userAnswer === correctAnswer) {
+                answer.classList.add('correct');
+                userScore += 1;
+                headerScore();
+            } else {
+                answer.classList.add('incorrect');
+
+                for (let i = 0; i < allOptions; i++) {
+                    if (physicsoptionList.children[i].textContent.trim() === correctAnswer) {
+                        physicsoptionList.children[i].classList.add('correct');
+                    }
+                }
+            }
+
+            for (let i = 0; i < allOptions; i++) {
+                physicsoptionList.children[i].classList.add('disabled');
+            }
+            physicsnextBtn.classList.add('active');
+        }
+
+        function questionCounter(index) {
+            const physicsquestionTotal = document.querySelector(".physics-question-total");
+            physicsquestionTotal.textContent = `${index} of ${physicsquestions.length} Questions`;
+        }
+
+        function headerScore() {
+            const physicsheaderScoreText = document.querySelector('.physics-header-score');
+            physicsheaderScoreText.textContent = `Score: ${userScore}/${physicsquestions.length}`;
+        }
+
+        function showResultBox() {
+            physicsquizBox.classList.remove('active');
+            physicsresultBox.classList.add('active');
+
+            const physicsScoreText = document.querySelector('.physics-score-text');
+            physicsScoreText.textContent = `Your Score ${userScore} out of ${physicsquestions.length}`;
+
+            const physicscircularProgress = document.querySelector('.physics-circular-progress');
+            const physicsprogressValue = document.querySelector('.physics-progress-value');
+            let progressStartValue = -1;
+            let progressEndValue = (userScore / physicsquestions.length) * 100;
+            let speed = 20;
+
+            let progress = setInterval(() => {
+                progressStartValue++;
+                physicsprogressValue.textContent = `${progressStartValue}%`;
+                physicscircularProgress.style.background = `conic-gradient(#440071 ${progressStartValue * 3.6}deg, rgba(255, 255, 255, .1) 0deg)`;
+
+                if (progressStartValue === progressEndValue) {
+                    clearInterval(progress);
+                }
+            }, speed);
+        }
+</script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compativle" content = "IE=edge">
+    <meta name="viewport" content = "width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container"> 
+        <section class="chemistry-quiz-section">
+            <div class="<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compativle" content = "IE=edge">
+    <meta name="viewport" content = "width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container"> 
+        <section class="chemistry-quiz-section">
+            <div class="chemistry-quiz-box">
+                <h1> Chemistry Quiz </h1>
+                <div class="chemistry-quiz-header">
+                    <span> Topics: Atomic Theory, Stoichiometry, Thermodynamics </span>
+                    <span class="chemistry-header-score"> Score: 0/5 </span>
+                </div>
+                <h2 class="chemistry-question-text">What does HTML stand for </h2>
+                <div class="chemistry-option-list"> 
+                    <div class="chemistry-option">
+                        <span></span>
+                    </div>
+                    <div class="chemistry-option">
+                        <span> </span>
+                    </div>
+                    <div class="chemistry-option">
+                        <span> </span>
+                    </div>
+                    <div class="chemistry-option">
+                        <span> </span>
+                    </div>
+                </div>
+                <div class="chemistry-quiz-footer">
+                    <span class = "chemistry-question-total">  </span>
+                    <button class="chemistry-next-btn"> Next </button>
+                </div>
+            </div>
+            <div class="chemistry-result-box">
+                <h2> Quiz Result! </h2>
+                <div class="chemistry-percentage-container">
+                    <div class="chemistry-circular-progress">
+                        <span class="chemistry-progress-value">0% </span>
+                    </div>
+                    <span class="chemistry-score-text"> Your Score 0 out of 5 </span>
+                </div>
+                <div class="chemistry-buttons">
+                    <button class="chemistry-tryAgain-btn"> Try Again </button>
+                    <button class="chemistry-goHome-btn">Go to Home</button>
+                </div>
+            </div>
+        </section>
+        <script src = "question.js"></script>
+        <script>
+            const chemistryquizSection = document.querySelector('.chemistry-quiz-section');
+            const chemistryquizBox = document.querySelector('.chemistry-quiz-box'); 
+            const chemistryresultBox = document.querySelector('.chemistry-result-box');
+            const chemistrytryAgainBtn = document.querySelector('.chemistry-tryAgain-btn');
+            const chemistrygoHomeBtn = document.querySelector('.chemistry-goHome-btn');
+            const chemistryoptionList = document.querySelector('.chemistry-option-list');
+            const chemistrynextBtn = document.querySelector('.chemistry-next-btn');
+    
+            let questionCount = 0;
+            let questionNumb = 1;
+            let userScore = 0;
+    
+            function initialize() {
+                chemistryquizSection.classList.add('active');
+                chemistryquizBox.classList.add('active');
+                showQuestions(questionCount);
+                questionCounter(questionNumb);
+                headerScore();
+            }
+            initialize();
+    
+            chemistrytryAgainBtn.onclick = () => {
+                chemistryquizBox.classList.add('active');
+                chemistryresultBox.classList.remove('active');
+                
+                questionCount = 0;
+                questionNumb = 1;
+                userScore = 0;
+    
+                showQuestions(questionCount);
+                questionCounter(questionNumb);
+                headerScore();
+            }
+            chemistrygoHomeBtn.onclick = () => {
+                window.location.href = 'index.html';
+            }
+            chemistrynextBtn.onclick = () => {
+                if (questionCount < chemistryquestions.length - 1) {
+                    questionCount++;
+                    showQuestions(questionCount);
+                    questionNumb++;
+                    questionCounter(questionNumb);
+                    chemistrynextBtn.classList.remove('active');
+                } else {
+                    chemistryquizBox.classList.remove('active');
+                    showResultBox();
+                }
+            }
+    
+            function showQuestions(index) {
+                const chemistryquestionText = document.querySelector(".chemistry-question-text");
+                chemistryquestionText.textContent = `${chemistryquestions[index].numb}. ${chemistryquestions[index].question}`;
+    
+                let optionTag = `
+                    <div class="chemistry-option"> <span>${chemistryquestions[index].options[0]}</span> </div>
+                    <div class="chemistry-option"> <span>${chemistryquestions[index].options[1]}</span> </div>
+                    <div class="chemistry-option"> <span>${chemistryquestions[index].options[2]}</span> </div>
+                    <div class="chemistry-option"> <span>${chemistryquestions[index].options[3]}</span> </div>`;
+    
+                chemistryoptionList.innerHTML = optionTag;
+    
+                const chemistryoption = document.querySelectorAll('.chemistry-option');
+                chemistryoption.forEach(option => {
+                    option.addEventListener('click', () => optionSelected(option));
+                });
+            }
+    
+            function optionSelected(answer) {
+                let userAnswer = answer.textContent.trim();
+                let correctAnswer = chemistryquestions[questionCount].answer.trim();
+                let allOptions = chemistryoptionList.children.length;
+    
+                if (userAnswer === correctAnswer) {
+                    answer.classList.add('correct');
+                    userScore += 1;
+                    headerScore();
+                } else {
+                    answer.classList.add('incorrect');
+    
+                    for (let i = 0; i < allOptions; i++) {
+                        if (chemistryoptionList.children[i].textContent.trim() === correctAnswer) {
+                            chemistryoptionList.children[i].classList.add('correct');
+                        }
+                    }
+                }
+    
+                for (let i = 0; i < allOptions; i++) {
+                    chemistryoptionList.children[i].classList.add('disabled');
+                }
+                chemistrynextBtn.classList.add('active');
+            }
+    
+            function questionCounter(index) {
+                const chemistryquestionTotal = document.querySelector(".chemistry-question-total");
+                chemistryquestionTotal.textContent = `${index} of ${chemistryquestions.length} Questions`;
+            }
+    
+            function headerScore() {
+                const chemistryheaderScoreText = document.querySelector('.chemistry-header-score');
+                chemistryheaderScoreText.textContent = `Score: ${userScore}/${chemistryquestions.length}`;
+            }
+    
+            function showResultBox() {
+                chemistryquizBox.classList.remove('active');
+                chemistryresultBox.classList.add('active');
+    
+                const chemistryScoreText = document.querySelector('.chemistry-score-text');
+                chemistryScoreText.textContent = `Your Score ${userScore} out of ${chemistryquestions.length}`;
+    
+                const chemistrycircularProgress = document.querySelector('.chemistry-circular-progress');
+                const chemistryprogressValue = document.querySelector('.chemistry-progress-value');
+                let progressStartValue = -1;
+                let progressEndValue = (userScore / chemistryquestions.length) * 100;
+                let speed = 20;
+    
+                let progress = setInterval(() => {
+                    progressStartValue++;
+                    chemistryprogressValue.textContent = `${progressStartValue}%`;
+                    chemistrycircularProgress.style.background = `conic-gradient(#006511 ${progressStartValue * 3.6}deg, rgba(255, 255, 255, .1) 0deg)`;
+    
+                    if (progressStartValue === progressEndValue) {
+                        clearInterval(progress);
+                    }
+                }, speed);
+            }
+    </script>
+    
+    </body>
+    
+    
+    </html>

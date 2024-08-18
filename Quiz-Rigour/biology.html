@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compativle" content = "IE=edge">
+    <meta name="viewport" content = "width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container"> 
+        <section class="biology-quiz-section">
+            <div class="<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compativle" content = "IE=edge">
+    <meta name="viewport" content = "width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container"> 
+        <section class="biology-quiz-section">
+            <div class="biology-quiz-box">
+                <h1 style = color:black;> Biology Quiz </h1>
+                <div class="biology-quiz-header">
+                    <span style = color:white> Topics: Biochemistry, Metobolic Processes, Population dynamics </span>
+                    <span class="biology-header-score"> Score: 0/5 </span>
+                </div>
+                <h2 class="biology-question-text"> </h2>
+                <div class="biology-option-list"> 
+                    <div class="biology-option">
+                        <span> </span> 
+                    </div>
+                    <div class="biology-option">
+                        <span> </span>
+                    </div>
+                    <div class="biology-option">
+                        <span> </span>
+                    </div>
+                    <div class="biology-option">
+                        <span> </span>
+                    </div>
+                </div>
+                <div class="biology-quiz-footer">
+                    <span class = "biology-question-total"> </span>
+                    <button class="biology-next-btn"> Next </button>
+                </div>
+            </div>
+            <div class="biology-result-box">
+                <h2> Quiz Result! </h2>
+                <div class="biology-percentage-container">
+                    <div class="biology-circular-progress">
+                        <span class="biology-progress-value">0% </span>
+                    </div>
+                    <span class="biology-score-text"> Your Score 0 out of 5 </span>
+                </div>
+                <div class="biology-buttons">
+                    <button class="biology-tryAgain-btn"> Try Again </button>
+                    <button class="biology-goHome-btn">Go to Home</button>
+                </div>
+            </div>
+        </section>
+        <script src = "question.js"></script>
+        <script>
+            const biologyquizSection = document.querySelector('.biology-quiz-section');
+            const biologyquizBox = document.querySelector('.biology-quiz-box'); 
+            const biologyresultBox = document.querySelector('.biology-result-box');
+            const biologytryAgainBtn = document.querySelector('.biology-tryAgain-btn');
+            const biologygoHomeBtn = document.querySelector('.biology-goHome-btn');
+            const biologyoptionList = document.querySelector('.biology-option-list');
+            const biologynextBtn = document.querySelector('.biology-next-btn');
+    
+            let questionCount = 0;
+            let questionNumb = 1;
+            let userScore = 0;
+    
+            function initialize() {
+                biologyquizSection.classList.add('active');
+                biologyquizBox.classList.add('active');
+                showQuestions(questionCount);
+                questionCounter(questionNumb);
+                headerScore();
+            }
+            initialize();
+    
+            biologytryAgainBtn.onclick = () => {
+                biologyquizBox.classList.add('active');
+                biologyresultBox.classList.remove('active');
+                
+                questionCount = 0;
+                questionNumb = 1;
+                userScore = 0;
+    
+                showQuestions(questionCount);
+                questionCounter(questionNumb);
+                headerScore();
+            }
+            biologygoHomeBtn.onclick = () => {
+                window.location.href = 'index.html';
+            }
+            biologynextBtn.onclick = () => {
+                if (questionCount < biologyquestions.length - 1) {
+                    questionCount++;
+                    showQuestions(questionCount);
+                    questionNumb++;
+                    questionCounter(questionNumb);
+                    biologynextBtn.classList.remove('active');
+                } else {
+                    biologyquizBox.classList.remove('active');
+                    showResultBox();
+                }
+            }
+    
+            function showQuestions(index) {
+                const biologyquestionText = document.querySelector(".biology-question-text");
+                biologyquestionText.textContent = `${biologyquestions[index].numb}. ${biologyquestions[index].question}`;
+    
+                let optionTag = `
+                    <div class="biology-option"> <span>${biologyquestions[index].options[0]}</span> </div>
+                    <div class="biology-option"> <span>${biologyquestions[index].options[1]}</span> </div>
+                    <div class="biology-option"> <span>${biologyquestions[index].options[2]}</span> </div>
+                    <div class="biology-option"> <span>${biologyquestions[index].options[3]}</span> </div>`;
+    
+                biologyoptionList.innerHTML = optionTag;
+    
+                const biologyoption = document.querySelectorAll('.biology-option');
+                biologyoption.forEach(option => {
+                    option.addEventListener('click', () => optionSelected(option));
+                });
+            }
+    
+            function optionSelected(answer) {
+                let userAnswer = answer.textContent.trim();
+                let correctAnswer = biologyquestions[questionCount].answer.trim();
+                let allOptions = biologyoptionList.children.length;
+    
+                if (userAnswer === correctAnswer) {
+                    answer.classList.add('correct');
+                    userScore += 1;
+                    headerScore();
+                } else {
+                    answer.classList.add('incorrect');
+    
+                    for (let i = 0; i < allOptions; i++) {
+                        if (biologyoptionList.children[i].textContent.trim() === correctAnswer) {
+                            biologyoptionList.children[i].classList.add('correct');
+                        }
+                    }
+                }
+    
+                for (let i = 0; i < allOptions; i++) {
+                    biologyoptionList.children[i].classList.add('disabled');
+                }
+                biologynextBtn.classList.add('active');
+            }
+    
+            function questionCounter(index) {
+                const biologyquestionTotal = document.querySelector(".biology-question-total");
+                biologyquestionTotal.textContent = `${index} of ${biologyquestions.length} Questions`;
+            }
+    
+            function headerScore() {
+                const biologyheaderScoreText = document.querySelector('.biology-header-score');
+                biologyheaderScoreText.textContent = `Score: ${userScore}/${biologyquestions.length}`;
+            }
+    
+            function showResultBox() {
+                biologyquizBox.classList.remove('active');
+                biologyresultBox.classList.add('active');
+    
+                const biologyScoreText = document.querySelector('.biology-score-text');
+                biologyScoreText.textContent = `Your Score ${userScore} out of ${biologyquestions.length}`;
+    
+                const biologycircularProgress = document.querySelector('.biology-circular-progress');
+                const biologyprogressValue = document.querySelector('.biology-progress-value');
+                let progressStartValue = -1;
+                let progressEndValue = (userScore / biologyquestions.length) * 100;
+                let speed = 20;
+    
+                let progress = setInterval(() => {
+                    progressStartValue++;
+                    biologyprogressValue.textContent = `${progressStartValue}%`;
+                    biologycircularProgress.style.background = `conic-gradient(#eaff5e ${progressStartValue * 3.6}deg, rgba(255, 255, 255, .1) 0deg)`;
+    
+                    if (progressStartValue === progressEndValue) {
+                        clearInterval(progress);
+                    }
+                }, speed);
+            }
+    </script>
+    
+    </body>
+    
+    
+    </html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compativle" content = "IE=edge">
+    <meta name="viewport" content = "width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container"> 
+        <section class="finance-quiz-section">
+            <div class="<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compativle" content = "IE=edge">
+    <meta name="viewport" content = "width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container"> 
+        <section class="finance-quiz-section">
+            <div class="finance-quiz-box">
+                <h1> Finance Quiz </h1>
+                <div class="finance-quiz-header">
+                    <span> Topics: Accounting, Investing, Corporate Finance, Management </span>
+                    <span class="finance-header-score"> Score: 0/5 </span>
+                </div>
+                <h2 class="finance-question-text"> </h2>
+                <div class="finance-option-list"> 
+                    <div class="finance-option">
+                        <span></span>
+                    </div>
+                    <div class="finance-option">
+                        <span> </span>
+                    </div>
+                    <div class="finance-option">
+                        <span> </span>
+                    </div>
+                    <div class="finance-option">
+                        <span> </span>
+                    </div>
+                </div>
+                <div class="finance-quiz-footer">
+                    <span class = "finance-question-total">  </span>
+                    <button class="finance-next-btn"> Next </button>
+                </div>
+            </div>
+            <div class="finance-result-box">
+                <h2> Quiz Result! </h2>
+                <div class="finance-percentage-container">
+                    <div class="finance-circular-progress">
+                        <span class="finance-progress-value">0% </span>
+                    </div>
+                    <span class="finance-score-text"> Your Score 0 out of 5 </span>
+                </div>
+                <div class="finance-buttons">
+                    <button class="finance-tryAgain-btn"> Try Again </button>
+                    <button class="finance-goHome-btn">Go to Home</button>
+                </div>
+            </div>
+        </section>
+        <script src = "question.js"></script>
+        <script>
+            const financequizSection = document.querySelector('.finance-quiz-section');
+            const financequizBox = document.querySelector('.finance-quiz-box'); 
+            const financeresultBox = document.querySelector('.finance-result-box');
+            const financetryAgainBtn = document.querySelector('.finance-tryAgain-btn');
+            const financegoHomeBtn = document.querySelector('.finance-goHome-btn');
+            const financeoptionList = document.querySelector('.finance-option-list');
+            const financenextBtn = document.querySelector('.finance-next-btn');
+    
+            let questionCount = 0;
+            let questionNumb = 1;
+            let userScore = 0;
+    
+            function initialize() {
+                financequizSection.classList.add('active');
+                financequizBox.classList.add('active');
+                showQuestions(questionCount);
+                questionCounter(questionNumb);
+                headerScore();
+            }
+            initialize();
+    
+            financetryAgainBtn.onclick = () => {
+                financequizBox.classList.add('active');
+                financeresultBox.classList.remove('active');
+                
+                questionCount = 0;
+                questionNumb = 1;
+                userScore = 0;
+    
+                showQuestions(questionCount);
+                questionCounter(questionNumb);
+                headerScore();
+            }
+            financegoHomeBtn.onclick = () => {
+                window.location.href = 'index.html';
+            }
+            financenextBtn.onclick = () => {
+                if (questionCount < financequestions.length - 1) {
+                    questionCount++;
+                    showQuestions(questionCount);
+                    questionNumb++;
+                    questionCounter(questionNumb);
+                    financenextBtn.classList.remove('active');
+                } else {
+                    financequizBox.classList.remove('active');
+                    showResultBox();
+                }
+            }
+    
+            function showQuestions(index) {
+                const financequestionText = document.querySelector(".finance-question-text");
+                financequestionText.textContent = `${financequestions[index].numb}. ${financequestions[index].question}`;
+    
+                let optionTag = `
+                    <div class="finance-option"> <span>${financequestions[index].options[0]}</span> </div>
+                    <div class="finance-option"> <span>${financequestions[index].options[1]}</span> </div>
+                    <div class="finance-option"> <span>${financequestions[index].options[2]}</span> </div>
+                    <div class="finance-option"> <span>${financequestions[index].options[3]}</span> </div>`;
+    
+                financeoptionList.innerHTML = optionTag;
+    
+                const financeoption = document.querySelectorAll('.finance-option');
+                financeoption.forEach(option => {
+                    option.addEventListener('click', () => optionSelected(option));
+                });
+            }
+    
+            function optionSelected(answer) {
+                let userAnswer = answer.textContent.trim();
+                let correctAnswer = financequestions[questionCount].answer.trim();
+                let allOptions = financeoptionList.children.length;
+    
+                if (userAnswer === correctAnswer) {
+                    answer.classList.add('correct');
+                    userScore += 1;
+                    headerScore();
+                } else {
+                    answer.classList.add('incorrect');
+    
+                    for (let i = 0; i < allOptions; i++) {
+                        if (financeoptionList.children[i].textContent.trim() === correctAnswer) {
+                            financeoptionList.children[i].classList.add('correct');
+                        }
+                    }
+                }
+    
+                for (let i = 0; i < allOptions; i++) {
+                    financeoptionList.children[i].classList.add('disabled');
+                }
+                financenextBtn.classList.add('active');
+            }
+    
+            function questionCounter(index) {
+                const financequestionTotal = document.querySelector(".finance-question-total");
+                financequestionTotal.textContent = `${index} of ${financequestions.length} Questions`;
+            }
+    
+            function headerScore() {
+                const financeheaderScoreText = document.querySelector('.finance-header-score');
+                financeheaderScoreText.textContent = `Score: ${userScore}/${financequestions.length}`;
+            }
+    
+            function showResultBox() {
+                financequizBox.classList.remove('active');
+                financeresultBox.classList.add('active');
+    
+                const financeScoreText = document.querySelector('.finance-score-text');
+                financeScoreText.textContent = `Your Score ${userScore} out of ${financequestions.length}`;
+    
+                const financecircularProgress = document.querySelector('.finance-circular-progress');
+                const financeprogressValue = document.querySelector('.finance-progress-value');
+                let progressStartValue = -1;
+                let progressEndValue = (userScore / financequestions.length) * 100;
+                let speed = 20;
+    
+                let progress = setInterval(() => {
+                    progressStartValue++;
+                    financeprogressValue.textContent = `${progressStartValue}%`;
+                    financecircularProgress.style.background = `conic-gradient(#880000 ${progressStartValue * 3.6}deg, rgba(255, 255, 255, .1) 0deg)`;
+    
+                    if (progressStartValue === progressEndValue) {
+                        clearInterval(progress);
+                    }
+                }, speed);
+            }
+    </script>
+    
+    </body>
+    
+    
+    </html>
